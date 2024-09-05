@@ -1,0 +1,73 @@
+// код за валидация на формата за онлайн запазване на час
+document.getElementById("appointmentForm").onsubmit = function() {
+    var name = document.getElementById("name").value;
+    var email = document.getElementById("email").value;
+    if (name === "" || email === "") {
+        alert("Моля, попълнете всички полета.");
+        return false;
+    }
+    return true;
+};
+};
+// код за валидация на формата за онлайн запазване на час
+
+
+
+// проверка на функционалността на базата данни и осигуряване, че всичко работи правилно
+Таблица wpen_users (Потребители)
+CREATE TABLE wpen_users (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    first_name VARCHAR(100),
+    last_name VARCHAR(100),
+    username VARCHAR(100),
+    email VARCHAR(100)
+);
+
+-- Таблица wpen_e_events (Запазени часове)
+CREATE TABLE wpen_e_events (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    appointment_date DATE,
+    appointment_time TIME,
+    phone VARCHAR(15),
+    FOREIGN KEY (user_id) REFERENCES wpen_users(id)
+);
+
+-- Таблица wpen_comments (Коментари)
+CREATE TABLE wpen_comments (
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    user_id INT,
+    comment_text TEXT,
+    FOREIGN KEY (user_id) REFERENCES wpen_users(id)
+);
+);
+// проверка на функционалността на базата данни и осигуряване, че всичко работи правилно
+
+
+
+// SQL команди за добавяне на първоначални данни в таблиците
+Добавяне на данни в таблицата wpen_users
+INSERT INTO wpen_users (first_name, last_name, username, email) VALUES
+('Ivan', 'Petrov', 'ivan_petrov', 'ivan@example.com'),
+('Maria', 'Ivanova', 'maria_ivanova', 'maria@example.com');
+Добавяне на данни в таблицата wpen_e_events
+INSERT INTO wpen_e_events (user_id, appointment_date, appointment_time, phone) VALUES
+(1, '2024-09-10', '10:00:00', '0888123456'),
+(2, '2024-09-11', '14:30:00', '0887654321');
+
+Добавяне на данни в таблицата wpen_comments
+INSERT INTO wpen_comments (user_id, comment_text) VALUES
+(1, 'Great service and friendly staff!'),
+(2, 'The appointment was quick and efficient.');
+// SQL команди за добавяне на първоначални данни в таблиците
+
+
+
+//Проверка на данните чрез SELECT заявка
+Проверка на данните в таблицата wpen_users
+SELECT * FROM wpen_users;
+Проверка на данните в таблицата wpen_e_events
+SELECT * FROM wpen_e_events;
+Проверка на данните в таблицата wpen_comments
+SELECT * FROM wpen_comments;
+//Проверка на данните чрез SELECT заявка
